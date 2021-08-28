@@ -29,10 +29,10 @@ let baseMaps = {
 
 // Create the map object with center, zoom level and default layer.
 let map = L.map('mapid', {
-    center: [44.0, -80.0],
-    zoom: 2,
-    layers: [streets]
-})
+    center: [43.7, -79.3],
+    zoom: 11,
+    layers: [satelliteStreets]
+});
 
 // Pass our map layers into our layers control and add the layers control to the map.
 L.control.layers(baseMaps).addTo(map);
@@ -40,8 +40,8 @@ L.control.layers(baseMaps).addTo(map);
 // Then we add our 'streets' tile layer to the map.
 streets.addTo(map);
 
-//Accessing the airport GEOJSON URL
-let airportData = "https://raw.githubusercontent.com/StanleyIsaacs/Mapping_Earthquakes/Mapping_GeoJSON_Linestrings/torontoRoutes.json"
+// Accessing the Toronto neighborhoods GeoJSON URL.
+let torontoHoods = "https://raw.githubusercontent.com/StanleyIsaacs/Mapping_Earthquakes/Mapping_GeoJSON_Polygons/torontoNeighborhoods.jsonhttps://raw.githubusercontent.com/<GitHub_name>/Mapping_Earthquakes/main/torontoNeighborhoods.json";
 
 // Create a style for the lines.
 let myStyle = {
@@ -50,7 +50,7 @@ let myStyle = {
 }
 
 // Grabbing our GeoJSON data.
-d3.json(torontoData).then(function(data) {
+d3.json(torontoHoods).then(function(data) {
     console.log(data);
 // Creating a GeoJSON layer with the retrieved data.
 L.geoJson(data, {
